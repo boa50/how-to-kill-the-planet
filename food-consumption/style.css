@@ -1,7 +1,6 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 600px;
-    background: url('./img/background.webp') no-repeat;
 }
 
 #title {
@@ -34,4 +33,8 @@ body {
 .axis-label {
     fill: #777777;
     font-size: 0.7rem;
+}
+
+#chart {
+    background-color: #030118;
 }

@@ -1,31 +1,5 @@
-const data = [
-    {
-        food: 'Chocolate',
-        emissions: 47
-    },
-    {
-        food: 'Beef',
-        emissions: 99
-    },
-    {
-        food: 'Sheep',
-        emissions: 40
-    }
-]
-
-const svgWidth = 600
-const svgHeight = 500
-const margin = {
-    left: 64,
-    right: 16,
-    top: 16,
-    bottom: 16
-}
-const width = svgWidth - margin.left - margin.right
-const height = svgHeight - margin.top - margin.bottom
-const barSize = 20
-const nElements = 3
-const barPadding = 0.1
+import { svgWidth, svgHeight, margin, width, height, barPadding } from "./constants.js"
+import { data_old as data, prepareData } from "./data.js"
 
 const svg = d3
     .select('#chart')
@@ -37,6 +11,9 @@ const chart = svg
     .attr('transform', `translate(${[margin.left, margin.top]})`)
 
 
+const { keyframes, prev, next } = prepareData(data)
+
+
 const x = d3
     .scaleBand()
     .domain(data.map(d => d.food))
@@ -45,7 +22,7 @@ const x = d3
 
 const y = d3
     .scaleLinear()
-    .domain([0, 100])
+    .domain([0, 120])
     .range([height, 0])
 
 chart
@@ -67,6 +44,7 @@ chart
     )
 
 
+
 chart
     .selectAll('.bars')
     .data(data)
@@ -75,3 +53,4 @@ chart
     .attr('y', d => y(d.emissions))
     .attr('height', d => height - y(d.emissions))
     .attr('width', x.bandwidth())
+    .attr('fill', '#F0B60F')
