@@ -11,5 +11,5 @@ export const height = svgHeight - margin.top - margin.bottom
 export const barPadding = 0.25
 
 export const n = 3
-export const k = 10
-export const duration = 1250
+export const k = 7
+export const duration = 250

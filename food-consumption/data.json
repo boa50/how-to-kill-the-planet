@@ -1,0 +1,62 @@
+[
+    {
+        "date": 0,
+        "name": "Chocolate",
+        "value": 0
+    },
+    {
+        "date": 0,
+        "name": "Beef",
+        "value": 0
+    },
+    {
+        "date": 0,
+        "name": "Sheep",
+        "value": 0
+    },
+    {
+        "date": 1,
+        "name": "Chocolate",
+        "value": 0
+    },
+    {
+        "date": 1,
+        "name": "Beef",
+        "value": 0
+    },
+    {
+        "date": 1,
+        "name": "Sheep",
+        "value": 40
+    },
+    {
+        "date": 2,
+        "name": "Chocolate",
+        "value": 47
+    },
+    {
+        "date": 2,
+        "name": "Beef",
+        "value": 0
+    },
+    {
+        "date": 2,
+        "name": "Sheep",
+        "value": 40
+    },
+    {
+        "date": 3,
+        "name": "Chocolate",
+        "value": 47
+    },
+    {
+        "date": 3,
+        "name": "Beef",
+        "value": 99
+    },
+    {
+        "date": 3,
+        "name": "Sheep",
+        "value": 40
+    }
+]

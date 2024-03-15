@@ -1,56 +1,6 @@
 import { n, k } from './constants.js'
 
-export const data_old = [
-    {
-        food: 'Chocolate',
-        emissions: 47
-    },
-    {
-        food: 'Beef',
-        emissions: 99
-    },
-    {
-        food: 'Sheep',
-        emissions: 40
-    }
-]
-
-export const prepareData = () => {
-    const getDate = n => n * 1000000000
-
-    const data = [
-        {
-            date: getDate(0),
-            name: 'Chocolate',
-            value: 0
-        },
-        {
-            date: getDate(0),
-            name: 'Beef',
-            value: 0
-        },
-        {
-            date: getDate(0),
-            name: 'Sheep',
-            value: 0
-        },
-        {
-            date: getDate(1),
-            name: 'Chocolate',
-            value: 47
-        },
-        {
-            date: getDate(1),
-            name: 'Beef',
-            value: 99
-        },
-        {
-            date: getDate(1),
-            name: 'Sheep',
-            value: 40
-        }
-    ]
-
+export const prepareData = data => {
     const names = new Set(data.map(d => d.name))
 
     const dateValues = Array.from(d3.rollup(data, ([d]) => +d.value, d => d.date, d => d.name))

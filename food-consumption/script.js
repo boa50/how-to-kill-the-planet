@@ -1,5 +1,9 @@
-import { svgWidth, svgHeight, margin, width, height, barPadding } from "./constants.js"
-import { data_old as data, prepareData } from "./data.js"
+import { svgWidth, svgHeight, margin, height, duration } from "./constants.js"
+import { prepareData } from "./data.js"
+import { createBarChart, updateBarChart, x, y } from "./bars.js"
+
+const getData = async () =>
+    d3.json('./data.json')
 
 const svg = d3
     .select('#chart')
@@ -9,21 +13,6 @@ const svg = d3
 const chart = svg
     .append('g')
     .attr('transform', `translate(${[margin.left, margin.top]})`)
-
-
-const { keyframes, prev, next } = prepareData(data)
-
-
-const x = d3
-    .scaleBand()
-    .domain(data.map(d => d.food))
-    .range([0, width])
-    .padding(barPadding)
-
-const y = d3
-    .scaleLinear()
-    .domain([0, 120])
-    .range([height, 0])
 
 chart
     .append('g')
@@ -43,14 +32,23 @@ chart
             .ticks(5)
     )
 
+getData().then(data => {
+    const { keyframes, prev, next } = prepareData(data)
 
+    const barChartFuncs = createBarChart(chart, keyframes, prev, next)
 
-chart
-    .selectAll('.bars')
-    .data(data)
-    .join('rect')
-    .attr('x', d => x(d.food))
-    .attr('y', d => y(d.emissions))
-    .attr('height', d => height - y(d.emissions))
-    .attr('width', x.bandwidth())
-    .attr('fill', '#F0B60F')
+    const animate = async () => {
+        for (const keyframe of keyframes) {
+            const transition = chart
+                .transition()
+                .duration(duration)
+                .ease(d3.easeLinear)
+
+            updateBarChart(barChartFuncs, keyframe, transition)
+
+            await transition.end()
+        }
+    }
+
+    animate()
+})
