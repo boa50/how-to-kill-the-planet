@@ -1,6 +1,7 @@
 import { svgWidth, svgHeight, margin, height, duration } from "./constants.js"
 import { prepareData } from "./data.js"
-import { createBarChart, updateBarChart, x, y } from "./bars.js"
+import { x, y } from "./aux.js"
+import { createBarChart, updateBarChart } from "./chart.js"
 
 const getData = async () =>
     d3.json('./data.json')
@@ -35,7 +36,7 @@ chart
 getData().then(data => {
     const { keyframes, prev, next } = prepareData(data)
 
-    const barChartFuncs = createBarChart(chart, keyframes, prev, next)
+    const barChartFuncs = createBarChart(chart, prev, next)
 
     const animate = async () => {
         for (const keyframe of keyframes) {
