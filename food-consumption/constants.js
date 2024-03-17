@@ -1,9 +1,11 @@
-export const svgWidth = 600
-export const svgHeight = 500
+// 9:16 res
+export const svgWidth = 500
+export const svgHeight = 889
+
 export const margin = {
-    left: 32,
-    right: 16,
-    top: 32,
+    left: 4,
+    right: 4,
+    top: 64,
     bottom: 32
 }
 export const width = svgWidth - margin.left - margin.right

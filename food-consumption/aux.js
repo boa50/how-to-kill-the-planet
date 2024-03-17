@@ -8,7 +8,7 @@ export const x = d3
 
 export const y = d3
     .scaleLinear()
-    .domain([0, 120])
+    .domain([0, 100])
     .range([height, 0])
 
 export const getRank = (mapping, d) => (mapping.get(d) || d).rank

@@ -1,18 +1,19 @@
 import { bars } from "./bars.js"
 import { images } from "./images.js"
+import { labels } from "./labels.js"
 
-export const createBarChart = (svg, prev, next) => {
-    const updateBars = bars(svg, prev, next)
-    // const updateLabels = labels(svg, prev, next)
-    const updateImages = images(svg, prev, next)
+export const createBarChart = (svg, prev) => {
+    const updateBars = bars(svg, prev)
+    const updateLabels = labels(svg, prev)
+    const updateImages = images(svg, prev)
 
-    return { updateBars, updateImages }
+    return { updateBars, updateImages, updateLabels }
 }
 
-export const updateBarChart = (barChartFuncs, keyframe, transition) => {
-    const { updateBars, updateImages } = barChartFuncs
+export const updateBarChart = (barChartFuncs, keyframe, transition, isLast) => {
+    const { updateBars, updateImages, updateLabels } = barChartFuncs
 
     updateBars(keyframe, transition)
-    // updateLabels(keyframe, transition)
+    updateLabels(keyframe, transition, isLast)
     updateImages(keyframe, transition)
 }
