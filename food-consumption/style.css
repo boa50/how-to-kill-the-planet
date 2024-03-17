@@ -36,5 +36,6 @@ body {
 }
 
 #chart {
-    background-color: #030118;
+    background: url('./img/background.webp') no-repeat;
+    background-size: cover;
 }
