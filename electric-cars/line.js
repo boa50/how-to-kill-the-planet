@@ -1,9 +1,9 @@
-export const svgWidth = 500
+export const svgWidth = 700
 export const svgHeight = 600
 
 export const margin = {
-    left: 32,
-    right: 32,
+    left: 64,
+    right: 64,
     top: 32,
     bottom: 8
 }
@@ -31,6 +31,47 @@ const drawLayoutLine = (baseX, legend) => {
         .text(legend)
 }
 
+const drawDataLine = (x, y, d1, d2, colour) => {
+    chart
+        .append('line')
+        .attr('x1', x(d1.year))
+        .attr('y1', y(d1.sold))
+        .attr('x2', x(d2.year))
+        .attr('y2', y(d2.sold))
+        .style('stroke', colour)
+        .style('stroke-width', 2)
+
+    chart
+        .append('text')
+        .attr('x', x(d1.year) - d1.sold.toString().length * 9)
+        .attr('y', y(d1.sold) + 4)
+        .attr('fill', 'grey')
+        .attr('font-size', 12)
+        .text(d1.sold)
+
+    chart
+        .append('text')
+        .attr('x', x(d2.year) + 7)
+        .attr('y', y(d2.sold) + 4)
+        .attr('fill', 'grey')
+        .attr('font-size', 12)
+        .text(d2.sold)
+
+    chart
+        .append('circle')
+        .attr('cx', x(d1.year))
+        .attr('cy', y(d1.sold))
+        .attr('r', 3)
+        .attr('fill', colour)
+
+    chart
+        .append('circle')
+        .attr('cx', x(d2.year))
+        .attr('cy', y(d2.sold))
+        .attr('r', 3)
+        .attr('fill', colour)
+}
+
 
 const getData = async () =>
     d3.json('./data.json')
@@ -55,14 +96,6 @@ getData().then(data => {
         .domain([0, d3.max(data, d => d.sold) * 1.05])
         .range([height, 0])
 
-    // chart
-    //     .append('g')
-    //     .call(d3.axisTop(x))
-
-    // chart
-    //     .append('g')
-    //     .call(d3.axisLeft(y))
-
 
     // Years lines
     drawLayoutLine(0, '2019')
@@ -73,21 +106,6 @@ getData().then(data => {
     const electric = data.filter(d => d.type === 'electric')
     const nonElectric = data.filter(d => d.type === 'non-electric')
 
-    chart
-        .append('line')
-        .attr('x1', x(electric[0].year))
-        .attr('y1', y(electric[0].sold))
-        .attr('x2', x(electric[1].year))
-        .attr('y2', y(electric[1].sold))
-        .style('stroke', 'brown')
-        .style('stroke-width', 2)
-
-    chart
-        .append('line')
-        .attr('x1', x(nonElectric[0].year))
-        .attr('y1', y(nonElectric[0].sold))
-        .attr('x2', x(nonElectric[1].year))
-        .attr('y2', y(nonElectric[1].sold))
-        .style('stroke', 'grey')
-        .style('stroke-width', 2)
+    drawDataLine(x, y, electric[0], electric[1], 'brown')
+    drawDataLine(x, y, nonElectric[0], nonElectric[1], 'grey')
 })
