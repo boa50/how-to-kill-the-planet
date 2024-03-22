@@ -10,6 +10,26 @@
         "sold": 2.08
     },
     {
+        "year": 2020,
+        "type": "non-electric",
+        "sold": 67.74
+    },
+    {
+        "year": 2020,
+        "type": "electric",
+        "sold": 2.97
+    },
+    {
+        "year": 2021,
+        "type": "non-electric",
+        "sold": 68.21
+    },
+    {
+        "year": 2021,
+        "type": "electric",
+        "sold": 6.50
+    },
+    {
         "year": 2022,
         "type": "non-electric",
         "sold": 62.66

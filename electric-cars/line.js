@@ -74,10 +74,10 @@ const drawDataLine = (x, y, d1, d2, colour) => {
 
 
 const getData = async () =>
-    d3.json('./data.json')
+    d3.json('./data/cars-sold.json')
 
 const svg = d3
-    .select('#chart')
+    .select('#cars-sold')
     .attr('width', svgWidth)
     .attr('height', svgHeight)
 
@@ -106,6 +106,6 @@ getData().then(data => {
     const electric = data.filter(d => d.type === 'electric')
     const nonElectric = data.filter(d => d.type === 'non-electric')
 
-    drawDataLine(x, y, electric[0], electric[1], 'brown')
-    drawDataLine(x, y, nonElectric[0], nonElectric[1], 'grey')
+    drawDataLine(x, y, electric[0], electric[electric.length - 1], 'brown')
+    drawDataLine(x, y, nonElectric[0], nonElectric[nonElectric.length - 1], 'grey')
 })
