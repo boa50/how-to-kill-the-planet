@@ -1,14 +1,13 @@
-export const svgWidth = 700
-export const svgHeight = 600
+import { svgWidth, svgHeight } from "./constants.js"
 
-export const margin = {
+const margin = {
     left: 64,
     right: 64,
     top: 32,
     bottom: 8
 }
-export const width = svgWidth - margin.left - margin.right
-export const height = svgHeight - margin.top - margin.bottom
+const width = svgWidth - margin.left - margin.right
+const height = svgHeight - margin.top - margin.bottom
 
 
 const drawLayoutLine = (baseX, legend) => {
