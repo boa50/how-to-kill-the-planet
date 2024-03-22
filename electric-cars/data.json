@@ -1,0 +1,22 @@
+[
+    {
+        "year": 2019,
+        "type": "non-electric",
+        "sold": 77.92
+    },
+    {
+        "year": 2019,
+        "type": "electric",
+        "sold": 2.08
+    },
+    {
+        "year": 2022,
+        "type": "non-electric",
+        "sold": 62.66
+    },
+    {
+        "year": 2022,
+        "type": "electric",
+        "sold": 10.20
+    }
+]
