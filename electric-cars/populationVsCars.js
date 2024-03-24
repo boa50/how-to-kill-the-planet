@@ -3,7 +3,7 @@ import { svgWidth, svgHeight, colours } from "./constants.js"
 const margin = {
     left: 48,
     right: 48,
-    top: 32,
+    top: 48,
     bottom: 8
 }
 const width = svgWidth - margin.left - margin.right
@@ -98,4 +98,33 @@ getData().then(datasets => {
 
     plotLine(population, x, y, colours.lowAttention)
     plotLine(carsSold, x, y, colours.carsSold)
+
+    const legend = chart
+        .append('g')
+        .attr('transform', `translate(-45, -30)`)
+
+    legend
+        .append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('font-weight', 700)
+        .attr('font-size', 14)
+        .attr('fill', colours.carsSold)
+        .text('Cars Sold')
+
+    legend
+        .append('text')
+        .attr('x', 70)
+        .attr('y', 0)
+        .attr('fill', '#777777')
+        .text('|')
+
+    legend
+        .append('text')
+        .attr('x', 80)
+        .attr('y', 0)
+        .attr('font-weight', 700)
+        .attr('font-size', 14)
+        .attr('fill', colours.lowAttention)
+        .text('Population Increase')
 })
