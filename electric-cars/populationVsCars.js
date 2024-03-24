@@ -1,8 +1,8 @@
-import { svgWidth, svgHeight } from "./constants.js"
+import { svgWidth, svgHeight, colours } from "./constants.js"
 
 const margin = {
-    left: 64,
-    right: 64,
+    left: 48,
+    right: 48,
     top: 32,
     bottom: 8
 }
@@ -36,7 +36,7 @@ const plotLine = (data, x, y, colour) => {
         .datum(data)
         .attr('fill', 'none')
         .attr('stroke', colour)
-        .attr('stroke-width', 2)
+        .attr('stroke-width', 3)
         .attr('d', line)
 }
 
@@ -84,13 +84,18 @@ getData().then(datasets => {
 
     const y = d3
         .scaleLinear()
-        .domain([0, d3.max(population, d => d.value) * 1.1])
+        .domain([0, d3.max(population, d => d.value) * 1.25])
         .range([height, 0])
     chart
         .append('g')
-        .call(d3.axisLeft(y))
+        .call(
+            d3
+                .axisLeft(y)
+                .tickFormat(d3.format('.2s'))
+                .tickSizeOuter(0)
+        )
 
 
-    plotLine(population, x, y, 'steelblue')
-    plotLine(carsSold, x, y, 'red')
+    plotLine(population, x, y, colours.lowAttention)
+    plotLine(carsSold, x, y, colours.carsSold)
 })

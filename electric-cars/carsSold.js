@@ -1,4 +1,4 @@
-import { svgWidth, svgHeight } from "./constants.js"
+import { svgWidth, svgHeight, colours } from "./constants.js"
 
 const margin = {
     left: 64,
@@ -38,7 +38,7 @@ const drawDataLine = (x, y, d1, d2, colour) => {
         .attr('x2', x(d2.year))
         .attr('y2', y(d2.sold))
         .style('stroke', colour)
-        .style('stroke-width', 2)
+        .style('stroke-width', 3)
 
     chart
         .append('text')
@@ -60,14 +60,14 @@ const drawDataLine = (x, y, d1, d2, colour) => {
         .append('circle')
         .attr('cx', x(d1.year))
         .attr('cy', y(d1.sold))
-        .attr('r', 3)
+        .attr('r', 5)
         .attr('fill', colour)
 
     chart
         .append('circle')
         .attr('cx', x(d2.year))
         .attr('cy', y(d2.sold))
-        .attr('r', 3)
+        .attr('r', 5)
         .attr('fill', colour)
 }
 
@@ -85,14 +85,16 @@ const chart = svg
     .attr('transform', `translate(${[margin.left, margin.top]})`)
 
 getData().then(data => {
+    const carsSold = data.filter(d => d.year >= 2019)
+
     const x = d3
         .scaleLinear()
-        .domain(d3.extent(data, d => d.year))
+        .domain(d3.extent(carsSold, d => d.year))
         .range([0, width])
 
     const y = d3
         .scaleLinear()
-        .domain([0, d3.max(data, d => d.sold) * 1.05])
+        .domain([0, d3.max(carsSold, d => d.sold) * 1.05])
         .range([height, 0])
 
 
@@ -102,9 +104,9 @@ getData().then(data => {
 
 
     // Data lines
-    const electric = data.filter(d => d.type === 'electric')
-    const nonElectric = data.filter(d => d.type === 'non-electric')
+    const electric = carsSold.filter(d => d.type === 'electric')
+    const nonElectric = carsSold.filter(d => d.type === 'non-electric')
 
-    drawDataLine(x, y, electric[0], electric[electric.length - 1], 'brown')
-    drawDataLine(x, y, nonElectric[0], nonElectric[nonElectric.length - 1], 'grey')
+    drawDataLine(x, y, electric[0], electric[electric.length - 1], colours.carsSold)
+    drawDataLine(x, y, nonElectric[0], nonElectric[nonElectric.length - 1], colours.lowAttention)
 })
