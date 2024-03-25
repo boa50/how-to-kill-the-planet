@@ -119,7 +119,7 @@ getData().then(data => {
             return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`
         })
         .attr('dy', '0.25em')
-        .attr('dx', d => d.id.length > 8 ? '-2.5em' : '-1.5em')
+        .attr('dx', d => d.id.length > 8 ? '-2.5em' : '-1.6em')
         .attr('fill', 'white')
         .text(d => d.id)
 })
