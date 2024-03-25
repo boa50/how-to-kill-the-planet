@@ -1,0 +1,50 @@
+[
+    {
+        "type": "electric",
+        "model": "Tesla Model 3 | Standard Range PlusX",
+        "vehicle (per mile)": 621,
+        "battery (per mile)": 487
+    },
+    {
+        "type": "electric",
+        "model": "Toyota bZ4X | AWDX",
+        "vehicle (per mile)": 696,
+        "battery (per mile)": 702
+    },
+    {
+        "type": "electric",
+        "model": "Tesla Model Y | Performance AWDX",
+        "vehicle (per mile)": 703,
+        "battery (per mile)": 731
+    },
+    {
+        "type": "electric",
+        "model": "Volkswagen ID.4X",
+        "vehicle (per mile)": 758,
+        "battery (per mile)": 604
+    },
+    {
+        "type": "combustion",
+        "model": "Volvo XC90 | FWDX",
+        "vehicle (per mile)": 901,
+        "battery (per mile)": 0
+    },
+    {
+        "type": "combustion",
+        "model": "Volvo XC60 | FWDX",
+        "vehicle (per mile)": 840,
+        "battery (per mile)": 0
+    },
+    {
+        "type": "combustion",
+        "model": "Honda AccordX",
+        "vehicle (per mile)": 704,
+        "battery (per mile)": 0
+    },
+    {
+        "type": "combustion",
+        "model": "Land Rover Defender | 90 MHEVX",
+        "vehicle (per mile)": 927,
+        "battery (per mile)": 0
+    }
+]
