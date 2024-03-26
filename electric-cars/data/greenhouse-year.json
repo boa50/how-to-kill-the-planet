@@ -1,0 +1,22 @@
+[
+    {
+        "type": "electric",
+        "model": "Nissan Leaf | (62 kW-hr battery pack)",
+        "lifetime": 10,
+        "annualMiles": 10000,
+        "vehicleProduction": 64.4,
+        "batteryProduction": 60.4,
+        "fuel": 139,
+        "fuelCombustion": 0
+    },
+    {
+        "type": "combustion",
+        "model": "Fiat 500 | L",
+        "lifetime": 10,
+        "annualMiles": 10000,
+        "vehicleProduction": 72,
+        "batteryProduction": 0,
+        "fuel": 83.6,
+        "fuelCombustion": 341
+    }
+]

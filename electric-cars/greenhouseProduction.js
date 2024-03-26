@@ -15,8 +15,9 @@ const endAngle = 2 * Math.PI
 const radius = Math.min(width - margin.left - margin.right, height - margin.top - margin.bottom) / 2
 const padding = 2
 
-// TO GET THE TOTAL VALUE WE MUST USE THE NUMBER OF MILES USED TO EXRTACT THE DATA
-const nMiles = 2000
+// TO GET THE TOTAL VALUE WE MUST USE THE NUMBER OF MILES AND YEARS USED TO EXRTACT THE DATA
+const multiplier = 2000 * 5
+
 
 const getData = async () =>
     d3.json('./data/greenhouse-production.json')
@@ -72,12 +73,12 @@ getData().then(data => {
         productionAverage.push({
             'type': type,
             'subtype': 'vehicle',
-            'prodction': vehicle * nMiles
+            'prodction': vehicle * multiplier
         })
         productionAverage.push({
             'type': type,
             'subtype': 'battery',
-            'prodction': battery * nMiles
+            'prodction': battery * multiplier
         })
     })
 
