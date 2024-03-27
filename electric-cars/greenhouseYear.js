@@ -51,7 +51,7 @@ const transformData = (data, annualKm) => {
 }
 
 const plotChart = (data, chart, x, xSubgroup, types, colour) => {
-    chart
+    const xAdded = chart
         .append('g')
         .attr('transform', `translate(0, ${height})`)
         .call(
@@ -59,20 +59,38 @@ const plotChart = (data, chart, x, xSubgroup, types, colour) => {
                 .axisBottom(x)
                 .tickFormat(d3.format('d'))
                 .tickSize(0)
+                .tickPadding(10)
         )
+
+    xAdded
+        .select('.domain')
+        .remove()
+    xAdded
+        .append('path')
+        .attr('d', 'M -20 0.5 H 660.5')
+        .attr('stroke', 'black')
 
     const y = d3
         .scaleLinear()
         .domain([0, d3.max(data, d => d.combustion.emission) * 1.25])
         .range([height, 0])
-    chart
+    const yAdded = chart
         .append('g')
         .call(
             d3
                 .axisLeft(y)
                 .tickFormat(d3.format('.2s'))
-                .tickSizeOuter(0)
+                .tickSize(0)
+                .tickPadding(0)
+                .ticks(5)
         )
+
+    yAdded
+        .select('.domain')
+        .remove()
+    yAdded
+        .select('.tick:first-child')
+        .remove()
 
 
     chart
