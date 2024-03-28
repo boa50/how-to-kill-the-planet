@@ -35,7 +35,7 @@ const getColour = obj => {
     const typeColours = {
         'electric': colours.carsSold,
         'combustion': colours.combustion,
-        'default': colours.lowAttention
+        'default': colours.backgroundContrast
     }
 
     switch (obj.depth) {

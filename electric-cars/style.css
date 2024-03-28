@@ -1,7 +1,11 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* width: 600px; */
     background-color: #000017;
+}
+
+body div {
+    width: 690px;
+    margin-left: 16px;
 }
 
 #title {

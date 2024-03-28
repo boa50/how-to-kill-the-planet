@@ -17,7 +17,7 @@ const drawLayoutLine = (baseX, legend) => {
         .attr('y1', 0)
         .attr('x2', baseX)
         .attr('y2', height)
-        .attr('stroke', 'grey')
+        .attr('stroke', colours.ticks)
         .attr('stroke-width', 1)
         .attr('stroke-dasharray', '3 5')
 
@@ -25,7 +25,7 @@ const drawLayoutLine = (baseX, legend) => {
         .append('text')
         .attr('x', baseX - 14)
         .attr('y', -10)
-        .attr('fill', 'grey')
+        .attr('fill', colours.ticks)
         .attr('font-size', 12)
         .text(legend)
 }
@@ -38,21 +38,21 @@ const drawDataLine = (x, y, d1, d2, colour) => {
         .attr('x2', x(d2.year))
         .attr('y2', y(d2.sold))
         .style('stroke', colour)
-        .style('stroke-width', 3)
+        .style('stroke-width', 7)
 
     chart
         .append('text')
         .attr('x', x(d1.year) - d1.sold.toString().length * 9)
         .attr('y', y(d1.sold) + 4)
-        .attr('fill', 'grey')
+        .attr('fill', colours.ticks)
         .attr('font-size', 12)
         .text(d1.sold)
 
     chart
         .append('text')
-        .attr('x', x(d2.year) + 7)
+        .attr('x', x(d2.year) + 12)
         .attr('y', y(d2.sold) + 4)
-        .attr('fill', 'grey')
+        .attr('fill', colours.ticks)
         .attr('font-size', 12)
         .text(d2.sold)
 
@@ -60,14 +60,14 @@ const drawDataLine = (x, y, d1, d2, colour) => {
         .append('circle')
         .attr('cx', x(d1.year))
         .attr('cy', y(d1.sold))
-        .attr('r', 5)
+        .attr('r', 9)
         .attr('fill', colour)
 
     chart
         .append('circle')
         .attr('cx', x(d2.year))
         .attr('cy', y(d2.sold))
-        .attr('r', 5)
+        .attr('r', 9)
         .attr('fill', colour)
 }
 

@@ -1,9 +1,10 @@
 import { svgWidth, svgHeight, colours } from "./constants.js"
+import { addLegend } from "./legend.js"
 
 const margin = {
     left: 48,
     right: 48,
-    top: 48,
+    top: 24,
     bottom: 8
 }
 const width = svgWidth - margin.left - margin.right
@@ -80,6 +81,8 @@ getData().then(datasets => {
                 .axisTop(x)
                 .tickValues(years)
                 .tickFormat(d3.format('d'))
+                .tickSize(0)
+                .tickPadding(5)
         )
 
     const y = d3
@@ -92,39 +95,19 @@ getData().then(datasets => {
             d3
                 .axisLeft(y)
                 .tickFormat(d3.format('.2s'))
-                .tickSizeOuter(0)
+                .tickSize(0)
+                .tickPadding(5)
         )
+        .select('.tick')
+        .remove()
 
 
     plotLine(population, x, y, colours.lowAttention)
     plotLine(carsSold, x, y, colours.carsSold)
 
-    const legend = chart
-        .append('g')
-        .attr('transform', `translate(-45, -30)`)
-
-    legend
-        .append('text')
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr('font-weight', 700)
-        .attr('font-size', 14)
-        .attr('fill', colours.carsSold)
-        .text('Cars Sold')
-
-    legend
-        .append('text')
-        .attr('x', 70)
-        .attr('y', 0)
-        .attr('fill', '#777777')
-        .text('|')
-
-    legend
-        .append('text')
-        .attr('x', 80)
-        .attr('y', 0)
-        .attr('font-weight', 700)
-        .attr('font-size', 14)
-        .attr('fill', colours.lowAttention)
-        .text('Population Increase')
+    addLegend(
+        'population-vs-cars-legend',
+        ['Cars Sold', 'Population Increase'],
+        [colours.carsSold, colours.lowAttention]
+    )
 })

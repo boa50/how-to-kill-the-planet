@@ -1,10 +1,11 @@
 // Based on: https://d3-graph-gallery.com/graph/barplot_grouped_basicWide.html
 import { svgWidth, svgHeight, colours } from './constants.js'
+import { addLegend } from './legend.js'
 
 const margin = {
     left: 32,
     right: 8,
-    top: 8,
+    top: 4,
     bottom: 32
 }
 const width = svgWidth - margin.left - margin.right
@@ -122,11 +123,17 @@ const plotChart = (data, chart, x, xSubgroup, types, colour) => {
 const chartHigh = getChart('greenhouse-year-high')
 const chartLow = getChart('greenhouse-year-low')
 
+addLegend(
+    'greenhouse-year-legend',
+    ['Electric', 'Combustion'],
+    [colours.carsSold, colours.combustion],
+    2
+)
+
 getData().then(data => {
     const types = ['electric', 'combustion']
     const greenhouseYearDataHigh = transformData(data, 7000)
     const greenhouseYearDataLow = transformData(data, 16000)
-
 
     // Default atributtes
     const x = d3
