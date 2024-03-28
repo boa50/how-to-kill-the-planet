@@ -120,8 +120,21 @@ const plotChart = (data, chart, x, xSubgroup, types, colour) => {
         .attr('fill', d => colour(d.key))
 }
 
+const addChartKm = (chart, km) => {
+    chart
+        .append('text')
+        .attr('x', 50)
+        .attr('y', 100)
+        .attr('fill', colours.lowAttention)
+        .attr('font-size', 50)
+        .attr('opacity', 0.15)
+        .text(`${km.toString().replaceAll('0', '')}k km / month`)
+}
+
 const chartHigh = getChart('greenhouse-year-high')
 const chartLow = getChart('greenhouse-year-low')
+const kmLow = 7000
+const kmHigh = 16000
 
 addLegend(
     'greenhouse-year-legend',
@@ -129,6 +142,9 @@ addLegend(
     [colours.carsSold, colours.combustion],
     2
 )
+
+addChartKm(chartHigh, kmLow)
+addChartKm(chartLow, kmHigh)
 
 getData().then(data => {
     const types = ['electric', 'combustion']

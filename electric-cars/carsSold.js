@@ -1,8 +1,8 @@
 import { svgWidth, svgHeight, colours } from "./constants.js"
 
 const margin = {
-    left: 64,
-    right: 64,
+    left: 72,
+    right: 72,
     top: 32,
     bottom: 8
 }
@@ -23,10 +23,10 @@ const drawLayoutLine = (baseX, legend) => {
 
     chart
         .append('text')
-        .attr('x', baseX - 14)
-        .attr('y', -10)
+        .attr('x', baseX - 16)
+        .attr('y', - 10)
         .attr('fill', colours.ticks)
-        .attr('font-size', 12)
+        .attr('font-size', 14)
         .text(legend)
 }
 
@@ -42,19 +42,19 @@ const drawDataLine = (x, y, d1, d2, colour) => {
 
     chart
         .append('text')
-        .attr('x', x(d1.year) - d1.sold.toString().length * 9)
-        .attr('y', y(d1.sold) + 4)
+        .attr('x', x(d1.year) - d1.sold.toString().length * 10 - 17)
+        .attr('y', y(d1.sold) + 5)
         .attr('fill', colours.ticks)
-        .attr('font-size', 12)
-        .text(d1.sold)
+        .attr('font-size', 16)
+        .text(`${d1.sold}M`)
 
     chart
         .append('text')
-        .attr('x', x(d2.year) + 12)
-        .attr('y', y(d2.sold) + 4)
+        .attr('x', x(d2.year) + 14)
+        .attr('y', y(d2.sold) + 5)
         .attr('fill', colours.ticks)
-        .attr('font-size', 12)
-        .text(d2.sold)
+        .attr('font-size', 16)
+        .text(`${d2.sold}M`)
 
     chart
         .append('circle')
