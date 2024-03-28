@@ -32,16 +32,16 @@ const transformData = (data, annualKm) => {
                 year: i,
                 electric: {
                     model: electric.model,
-                    emission: (electric.vehicleProduction * electric.lifetime * electric.annualMiles) +
+                    emission: ((electric.vehicleProduction * electric.lifetime * electric.annualMiles) +
                         (electric.batteryProduction * electric.lifetime * electric.annualMiles) +
-                        (electric.fuel * i * kmToMiles)
+                        (electric.fuel * i * kmToMiles)) / 1e6
                 },
                 combustion: {
                     model: combustion.model,
-                    emission: (combustion.vehicleProduction * combustion.lifetime * combustion.annualMiles) +
+                    emission: ((combustion.vehicleProduction * combustion.lifetime * combustion.annualMiles) +
                         (combustion.batteryProduction * combustion.lifetime * combustion.annualMiles) +
                         (combustion.fuel * i * kmToMiles) +
-                        (combustion.fuelCombustion * i * kmToMiles)
+                        (combustion.fuelCombustion * i * kmToMiles)) / 1e6
                 }
             }
         )
@@ -67,8 +67,8 @@ const plotChart = (data, chart, x, xSubgroup, types, colour) => {
         .remove()
     xAdded
         .append('path')
-        .attr('d', 'M -20 0.5 H 660.5')
-        .attr('stroke', 'black')
+        .attr('d', 'M -15 0.5 H 660.5')
+        .attr('stroke', '#d4d4d4')
 
     const y = d3
         .scaleLinear()
@@ -79,10 +79,10 @@ const plotChart = (data, chart, x, xSubgroup, types, colour) => {
         .call(
             d3
                 .axisLeft(y)
-                .tickFormat(d3.format('.2s'))
+                .tickFormat(d3.format('d'))
                 .tickSize(0)
-                .tickPadding(0)
-                .ticks(5)
+                .tickPadding(5)
+                .ticks(6)
         )
 
     yAdded
@@ -91,6 +91,16 @@ const plotChart = (data, chart, x, xSubgroup, types, colour) => {
     yAdded
         .select('.tick:first-child')
         .remove()
+
+    const lastTick = yAdded
+        .select('.tick:last-child')
+
+    lastTick
+        .append('text')
+        .attr('dx', '2em')
+        .attr('dy', lastTick.select('text').attr('dy'))
+        .attr('fill', 'currentColor')
+        .text('tCO₂')
 
 
     chart

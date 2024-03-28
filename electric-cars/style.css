@@ -1,15 +1,16 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 600px;
+    /* width: 600px; */
+    background-color: #000017;
 }
 
 #title {
-    color: #777777;
+    color: #d4d4d4;
     margin-block-end: 0.2em;
 }
 
 #subtitle {
-    color: #777777;
+    color: #d4d4d4;
     margin-block-start: 0;
     margin-block-end: 0.5em;
     font-weight: normal;
@@ -18,20 +19,21 @@ body {
 #caption {
     display: flex;
     justify-content: end;
-    color: #999999;
+    color: #737373;
     font-size: 0.8rem;
     word-break: break-all;
 }
 
 .tick {
-    color: #777777;
+    color: #a3a3a3;
+    font-size: 0.75rem;
 }
 
 .domain {
-    color: #777777;
+    color: #a3a3a3;
 }
 
 .axis-label {
-    fill: #777777;
+    fill: #a3a3a3;
     font-size: 0.7rem;
 }
