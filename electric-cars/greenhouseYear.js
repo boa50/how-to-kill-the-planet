@@ -9,7 +9,7 @@ const margin = {
     bottom: 32
 }
 
-const svgHeight = svgHeightDefault - 40
+const svgHeight = svgHeightDefault - 50
 const width = svgWidth - margin.left - margin.right
 const height = (svgHeight / 2) - margin.top - margin.bottom
 
