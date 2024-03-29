@@ -1,5 +1,5 @@
 // Based on https://observablehq.com/@d3/sunburst-component
-import { svgWidth, svgHeight, colours } from './constants.js'
+import { svgWidth, svgHeight as svgHeightDefault, colours } from './constants.js'
 
 const margin = {
     left: 8,
@@ -7,6 +7,8 @@ const margin = {
     top: 8,
     bottom: 8
 }
+
+const svgHeight = svgHeightDefault - 20
 const width = svgWidth - margin.left - margin.right
 const height = svgHeight - margin.top - margin.bottom
 

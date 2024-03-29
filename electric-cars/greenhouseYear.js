@@ -1,5 +1,5 @@
 // Based on: https://d3-graph-gallery.com/graph/barplot_grouped_basicWide.html
-import { svgWidth, svgHeight, colours } from './constants.js'
+import { svgWidth, svgHeight as svgHeightDefault, colours } from './constants.js'
 import { addLegend } from './legend.js'
 
 const margin = {
@@ -8,6 +8,8 @@ const margin = {
     top: 4,
     bottom: 32
 }
+
+const svgHeight = svgHeightDefault - 40
 const width = svgWidth - margin.left - margin.right
 const height = (svgHeight / 2) - margin.top - margin.bottom
 
@@ -127,7 +129,7 @@ const addChartKm = (chart, km) => {
         .attr('y', 100)
         .attr('fill', colours.lowAttention)
         .attr('font-size', 50)
-        .attr('opacity', 0.15)
+        .attr('opacity', 0.5)
         .text(`${km.toString().replaceAll('0', '')}k km / month`)
 }
 

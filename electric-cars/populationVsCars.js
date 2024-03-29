@@ -1,4 +1,4 @@
-import { svgWidth, svgHeight, colours } from "./constants.js"
+import { svgWidth, svgHeight as svgHeightDefault, colours } from "./constants.js"
 import { addLegend } from "./legend.js"
 
 const margin = {
@@ -7,6 +7,8 @@ const margin = {
     top: 24,
     bottom: 8
 }
+
+const svgHeight = svgHeightDefault - 100
 const width = svgWidth - margin.left - margin.right
 const height = svgHeight - margin.top - margin.bottom
 
